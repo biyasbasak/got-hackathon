@@ -12,6 +12,7 @@ const mongoUrl = require('./config').mongoUrl;
 const app = express();
 const server = http.createServer(app);
 
+const port = process.env.PORT || 3000;
 db.connect(mongoUrl, function (err) {
 	if (err) {
 		console.log('unable to connect to the database');
@@ -33,7 +34,7 @@ app.use('/stats', statEndpoints);
 
 
 
-server.listen(3000, function (err) {
+server.listen(port, function (err) {
 	if (err) throw err;
 	console.log("server is on");
 })
